@@ -12,26 +12,22 @@ North American VW and Audi Virtual Cockpits.
 
 ## Status
 
-Initial firmware-intake repository. No installable build exists yet and nothing
-in this repository should be installed on a vehicle.
+Active port development. No public installable build exists yet.
 
-The first milestone is to identify one exact NAR target and its closest working
-EU donor, then map:
+The first target is Audi AUG22 `MHI2_US_AUG22_K3345`, MU1439. Host-side
+analysis found that its core iAP2, RGI, video-over-MOST, and HMI classes match
+the working EU K3346 implementation closely enough for a target-locked NAR
+source build. The fixed iAP2 hook verifier passes completely.
 
-1. CarPlay route-guidance negotiation and messages;
-2. the MHI2 cluster/BAP guidance interface;
-3. the CarPlay secondary-screen video path;
-4. the MOST video transport to the Virtual Cockpit; and
-5. a reversible, target-locked installation method.
+See [the AUG22 port report](docs/AUG22_PORT.md) and the
+[compatibility matrix](docs/COMPATIBILITY.md). These results are static
+firmware evidence, not vehicle-test evidence.
 
-## Firmware needed
+## Firmware coverage
 
-For the first target, provide:
-
-- the complete NAR firmware archive;
-- the exact train and MU version shown by the unit;
-- brand and hardware part number when known; and
-- a working EU firmware or project that supports the same feature.
+NAR and EU/RoW firmware donors have been received for AUG22, AU57x, AU37x,
+AU43x, AU62x, and VWG13. Firmware remains private analysis input and is never
+committed.
 
 Do not commit firmware, extracted vendor binaries, keys, certificates, or
 personal vehicle data. Keep them outside the repository and use the local
@@ -44,6 +40,7 @@ Node.js 22 or newer is required.
 ```sh
 npm test
 npm run fingerprint -- path/to/extracted-firmware firmware-manifest.json
+npm run verify-target -- profiles/audi-aug22-us-k3345-mu1439.json path/to/app-tree --lsd path/to/lsd.jxe
 ```
 
 The tool records relative paths, byte sizes, and SHA-256 values without copying
@@ -54,13 +51,20 @@ before sharing it.
 
 ```text
 docs/       firmware intake and development notes
+patches/    target-specific changes to pinned upstream source
+profiles/   exact, fail-closed NAR target identities
 targets/    reviewed target manifests with no firmware content
 tools/      read-only analysis and build tools
 test/       host-side tests
 ```
 
-Implementation directories will be added only after the first NAR firmware is
-fingerprinted and the platform boundaries are known.
+`profiles/` contains fail-closed target identities. A profile match means only
+that the supplied files match the analyzed firmware; it does not mean a build
+has been tested in a vehicle.
+
+The `AUG22 source audit` workflow checks the NAR patch against an exact pinned
+upstream revision and runs the pinned QNX-target shell auditor. It uses no
+firmware or vendor binaries and does not produce an install package.
 
 ## Safety
 

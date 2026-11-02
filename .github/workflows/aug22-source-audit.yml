@@ -1,0 +1,53 @@
+name: AUG22 source audit
+
+on:
+  push:
+    paths:
+      - ".github/workflows/aug22-source-audit.yml"
+      - "patches/audi-aug22-us-k3345-mu1439.patch"
+      - "profiles/audi-aug22-us-k3345-mu1439.json"
+      - "upstream.lock.json"
+  pull_request:
+    paths:
+      - ".github/workflows/aug22-source-audit.yml"
+      - "patches/audi-aug22-us-k3345-mu1439.patch"
+      - "profiles/audi-aug22-us-k3345-mu1439.json"
+      - "upstream.lock.json"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out NAR port metadata
+        uses: actions/checkout@v4
+
+      - name: Check out pinned AUG22 implementation
+        uses: actions/checkout@v4
+        with:
+          repository: ProManiFest2122/mhi2-k3346-carplay-vc
+          ref: 17b4a2c5ff4ad113c7ad1df9a89fd5fd940738b2
+          path: work/upstream
+          persist-credentials: false
+
+      - name: Check out pinned QNX shell auditor
+        uses: actions/checkout@v4
+        with:
+          repository: harman-f/mhi2_altscreen_carplay
+          ref: a5e32b8e69f22335e60c0db49ddafdc7919a914f
+          path: work/checker
+          persist-credentials: false
+
+      - name: Verify and apply the NAR source patch
+        run: |
+          git -C work/upstream apply --check "$GITHUB_WORKSPACE/patches/audi-aug22-us-k3345-mu1439.patch"
+          git -C work/upstream apply "$GITHUB_WORKSPACE/patches/audi-aug22-us-k3345-mu1439.patch"
+
+      - name: Audit the patched installer for the QNX target shell
+        run: |
+          python work/checker/tools/check_mu1440_target_shell.py \
+            --self-test \
+            --check work/upstream/port_k3346/altscreen/deployment/custom.sh

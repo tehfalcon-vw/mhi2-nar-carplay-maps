@@ -1,0 +1,53 @@
+{
+  "schemaVersion": 1,
+  "id": "audi-aug22-us-k3345-mu1439-app70",
+  "platform": "MHI2",
+  "brand": "Audi",
+  "family": "AUG22",
+  "train": "MHI2_US_AUG22_K3345",
+  "archiveLabel": "MHI2_US_AUG22_K3347_MU1439",
+  "mu": 1439,
+  "variant": "FM2-H-N-US-AU-MLE",
+  "hardwareVariant": "70",
+  "status": "host-static-match-not-vehicle-tested",
+  "sourceArchive": {
+    "bytes": 1701516018,
+    "sha256": "a29194ef514a08fba12b94569ba24f6ca61fdcf396612f6f525d522bb6352e00"
+  },
+  "appImage": {
+    "path": "MMX2/app/70/default/app.img",
+    "bytes": 1019183104,
+    "sha256": "925f587b9bf6cec089824acc6bb3d2707b7949f2934895eed00ede6e2d109058"
+  },
+  "hmiVersion": "HMI_AU_MIB2_H_NAR_G22_C6_190300",
+  "lsd": {
+    "bytes": 58130366,
+    "sha256": "6672594fa592b71a12baf9ce961263e133ae21f4e7e6dd4c1c11a006fc4fc2ec"
+  },
+  "donor": {
+    "train": "MHI2_ER_AUG22_K3346",
+    "mu": 1438,
+    "sourceCommit": "17b4a2c5ff4ad113c7ad1df9a89fd5fd940738b2",
+    "repository": "https://github.com/ProManiFest2122/mhi2-k3346-carplay-vc"
+  },
+  "appFiles": [
+    { "path": "armle/lib/dll/ipod-drvr-iap2.so", "bytes": 739925, "sha256": "0ac13f43d3fb259eee328c272fa1211bb558b6e2cd97c6e38ef38e4e71469d51" },
+    { "path": "armle/lib/libnvss_video.so", "bytes": 73304, "sha256": "99be82415f51c7139a93a4c4081cffb4d3937826d41a669e1b505ba6760e234d" },
+    { "path": "armle/usr/lib/libiap2client.so.1", "bytes": 18613, "sha256": "33efe4fe95f07e1d3d5abb6a39edfb300430e417f30eb61b1600eaaaded9f31d" },
+    { "path": "armle/usr/sbin/mm-ipod", "bytes": 40297, "sha256": "57ef5e7010f2a8b574ad8b681f05004e1b337e67c4471da4c6a7153db0bcfb4f" },
+    { "path": "eso/bin/apps/dmdt", "bytes": 11880, "sha256": "4e62b48055fabceb38d4693454bc7e806abc1602347b22104b1593cf4c99738b" },
+    { "path": "eso/bin/apps/videoovermost", "bytes": 131424, "sha256": "4f29d43222ad0218dcaaa50698deb3ae90f9e841f95897cdb3c055b1e9d7dc8c" },
+    { "path": "eso/hmi/lsd/lsd.sh", "bytes": 15079, "sha256": "a21649b32c615366fe36a193fb9a9d82637f8deb346a853c0cefd9fdcec32f2d" },
+    { "path": "eso/hmi/lsd/traceConfig.properties", "bytes": 19489, "sha256": "6782b9a7f7ad2ac4667ee6651f7af5794629a0ae3ed163f4ac6d5edab801c7b7" },
+    { "path": "eso/lib/factories/libdsicarplayproxy.so", "bytes": 73240, "sha256": "08315fa3c7768f68cb3cbab15197c614f307bbc67985d7bd6350891055a1a3ad" },
+    { "path": "eso/lib/libdmdt_core.so", "bytes": 37612, "sha256": "959b00174dc7e7679151e27b73381bdc1e0a292c167e94275197a07043327c5b" },
+    { "path": "eso/lib/libirc_mmx_adapter.so", "bytes": 296700, "sha256": "f21e43f89c0b6a1365bb41e91f326a29534554b9fed78236bbb8a819af9c05a8" }
+  ],
+  "evidence": {
+    "iap2OffsetVerifier": "all-pass",
+    "hmiClassEntries": 29088,
+    "hmiEntriesIdenticalToDonor": 29072,
+    "hmiEntriesChangedFromDonor": 16,
+    "requiredDonorOverrideClassesIdentical": 7
+  }
+}

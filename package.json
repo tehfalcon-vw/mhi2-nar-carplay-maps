@@ -9,6 +9,7 @@
   },
   "scripts": {
     "test": "node --test",
-    "fingerprint": "node tools/fingerprint-tree.cjs"
+    "fingerprint": "node tools/fingerprint-tree.cjs",
+    "verify-target": "node tools/verify-target.cjs"
   }
 }

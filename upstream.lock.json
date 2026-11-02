@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "components": [
+    {
+      "name": "Audi AUG22 K3346 CarPlay/VC implementation",
+      "repository": "https://github.com/ProManiFest2122/mhi2-k3346-carplay-vc",
+      "commit": "17b4a2c5ff4ad113c7ad1df9a89fd5fd940738b2",
+      "license": "GPL-3.0-or-later with additional provenance boundaries documented upstream",
+      "usage": "Source and build baseline for the AUG22 NAR profile; not vendored"
+    },
+    {
+      "name": "MHI2 firmware toolkit",
+      "repository": "https://github.com/harman-f/MHI2-MHI2Q-MH2P-Firmware-Toolkit",
+      "usage": "Read-only firmware and MIFS Stage-2 extraction"
+    },
+    {
+      "name": "jxe2jar",
+      "repository": "https://github.com/luka-dev/jxe2jar",
+      "commit": "9eeb45bbf14bf8afe3452c7be96a4d1f0206a286",
+      "usage": "Local HMI class comparison only; not redistributed"
+    },
+    {
+      "name": "MHI2 QNX shell auditor",
+      "repository": "https://github.com/harman-f/mhi2_altscreen_carplay",
+      "commit": "a5e32b8e69f22335e60c0db49ddafdc7919a914f",
+      "usage": "Host-side audit of the patched deployment shell; not vendored"
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+diff --git a/port_k3346/altscreen/deployment/custom.sh b/port_k3346/altscreen/deployment/custom.sh
+--- a/port_k3346/altscreen/deployment/custom.sh
++++ b/port_k3346/altscreen/deployment/custom.sh
+@@ -26,9 +26,9 @@
+ # Stock K3346 (collector v1.2 + backup M.I.B., identyczne): rozmiary plikow, ktore
+ # Etap 4 zmienia, oraz oczekiwane rozmiary po zmianie (+21 B lua, +139 B iap2.cfg:
+ # [ident] RGI + Etap 6 0x415a/0x4170/0x4171).
+ K3346_OTG_LUA_SIZE=19907; K3346_OTG_LUA_NEW_SIZE=19928
+-K3346_IAP2CFG_SIZE=5852; K3346_IAP2CFG_NEW_SIZE=5991
++K3346_IAP2CFG_SIZE=5853; K3346_IAP2CFG_NEW_SIZE=5992
+ # Etap 6b: z plikiem BT_MAC na karcie dochodzi sekcja [bluetooth] (+150 B, adres
+ # ma zawsze 17 znakow).
+-K3346_IAP2CFG_BT_SIZE=6141; E4_BTMAC_FILE="$MOD/BT_MAC"
++K3346_IAP2CFG_BT_SIZE=6142; E4_BTMAC_FILE="$MOD/BT_MAC"
+ K3346_MMIPOD_SIZE=40297
+@@ -211,7 +211,7 @@
+ #      Nazwa malymi literami (collector v1.2: /net/mmx/ifs/lsd.jxe); QNX
+ #      rozroznia wielkosc liter - /ifs/LSD.JXE w aucie nie istnieje.
+ # Awaryjne pominiecie: MIB_FORCE=1 (swiadoma decyzja, na wlasne ryzyko).
+-K3346_HMI_VERSION='HMI_AU_MIB2_H_EU_G22_C6_190300'
++K3346_HMI_VERSION='HMI_AU_MIB2_H_NAR_G22_C6_190300'
+ K3346_IAP2_SIZE=739925
+-K3346_LSD_SIZE=58131096
++K3346_LSD_SIZE=58130366
+ K3346_LSD_PATH="${MIB_LSD_JXE:-/ifs/lsd.jxe}"
+@@ -225,3 +225,3 @@
+ [ -n "$HV" ] || fail "VERSION_GATE: nie odczytano HMI_Version z $VP"
+-[ "$HV" = "$K3346_HMI_VERSION" ] || fail "VERSION_GATE: HMI_Version='$HV', oczekiwano '$K3346_HMI_VERSION'. To nie jest MHI2_ER_AUG22_K3346/MU1438 - instalacja PRZERWANA"
++[ "$HV" = "$K3346_HMI_VERSION" ] || fail "VERSION_GATE: HMI_Version='$HV', oczekiwano '$K3346_HMI_VERSION'. To nie jest MHI2_US_AUG22_K3345/MU1439 - instalacja PRZERWANA"
+ say "VERSION_GATE: HMI_Version=$HV OK"
