@@ -30,6 +30,10 @@ working K3663 cluster/HUD implementation as a Java/API donor. See the
 fail-closed installer has completed install and rollback against copied files
 from the supplied NAR image; it has not been tested in a vehicle.
 
+AU37x MU1363 is the third analyzed target. Its NAR iAP2/video stack and every
+donor-overridden HMI base class match the car-tested EU P5089 implementation.
+See the [AU37x port report](docs/AU37X_PORT.md).
+
 ## Firmware coverage
 
 NAR and EU/RoW firmware donors have been received for AUG22, AU57x, AU37x,

@@ -43,6 +43,13 @@
       "repository": "https://github.com/luka-dev/qnx65-armv7-toolchain",
       "commit": "56a66557245af14077678cd28a83ce3a337d9e2d",
       "usage": "Pinned target headers for host native compilation and ABI verification"
+    },
+    {
+      "name": "Audi AU37x CarPlay and Virtual Cockpit implementation",
+      "repository": "https://github.com/chefranov/mhi2-au37x-carplay",
+      "commit": "a46136f705f61442e9074d2e43f2533c567307f2",
+      "license": "GPL-3.0",
+      "usage": "Vehicle-tested EU P5089 direct donor for the AU37x NAR P5107 target; not vendored"
     }
   ]
 }
