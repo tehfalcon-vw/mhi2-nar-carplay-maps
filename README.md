@@ -37,6 +37,11 @@ also passed against a relocated fixture made from the supplied NAR files, with
 all live stock files restored byte-for-byte. See the
 [AU37x port report](docs/AU37X_PORT.md).
 
+AU43x / Audi TT MU1389 is the fourth analyzed target. Its NAR and EU TT core
+CarPlay stacks match directly, and the AU37x implementation's non-PDC HMI
+overrides are compatible. PDC is explicitly prohibited because one stock base
+class differs. See the [AU43x port report](docs/AU43X_PORT.md).
+
 ## Firmware coverage
 
 NAR and EU/RoW firmware donors have been received for AUG22, AU57x, AU37x,

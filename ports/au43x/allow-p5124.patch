@@ -1,0 +1,22 @@
+diff --git a/install.sh b/install.sh
+index 667dc2e..fdfe3b0 100755
+--- a/install.sh
++++ b/install.sh
+@@ -149,6 +149,7 @@ done
+ TRAIN_OK=""
+ case "$TRAIN" in
+     MHI2_*_AU37[xX]_*|MHI2_*_AU276_*) TRAIN_OK=1 ;;
++    MHI2_US_AU43[xX]_P5124*) TRAIN_OK=1 ;;
+     "") ;;
+     *) TRAIN_OK=0 ;;
+ esac
+@@ -174,7 +175,8 @@ fi
+ case "$TRAIN_OK" in
+     1) say "firmware train: $TRAIN - ok" ;;
+     0) say "!! firmware train: $TRAIN"
+-       say "!! These patches are for MHI2_*_AU37x_* and MHI2_*_AU276_* firmware only."
++       say "!! These patches are for MHI2_*_AU37x_*, MHI2_*_AU276_*, and"
++       say "!! the separately gated MHI2_US_AU43x_P5124 target only."
+        say "!! They replace stock HMI classes of that firmware, and on another train"
+        say "!! they can leave the main screen black. See"
+        say "!! https://github.com/chefranov/mhi2-au37x-carplay/wiki/Compatibility"

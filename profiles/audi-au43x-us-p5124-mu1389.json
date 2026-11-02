@@ -1,0 +1,64 @@
+{
+  "schemaVersion": 1,
+  "id": "audi-au43x-us-p5124-mu1389-app70",
+  "platform": "MHI2",
+  "brand": "Audi",
+  "family": "AU43x",
+  "vehicle": "TT",
+  "train": "MHI2_US_AU43x_P5124",
+  "mu": 1389,
+  "hardwareVariant": "70",
+  "status": "cross-family-direct-stack-qualified-not-installer-simulated-not-vehicle-tested",
+  "sourceArchive": {
+    "bytes": 810816601,
+    "sha256": "7031803f4e0ffb99e3130a8907b6c032503bfe53d288f2bd948c131978b63840"
+  },
+  "appImage": {
+    "path": "MMX2/app/70/default/app.img",
+    "bytes": 1019183104,
+    "sha256": "78c2e85d7a0b31a93aae6fe04bfcaef7f8097dbfdf8439be5533712499fbe546"
+  },
+  "hmiVersion": "HMI_AU_MIB2_H_NAR_G24_C10_182700",
+  "lsd": {
+    "bytes": 60662140,
+    "sha256": "02934794f80aabeb31cc423865c72d097e017e4eae327a268fea72d669e2ba9f"
+  },
+  "donor": {
+    "firmware": "MHI2_ER_AU43x_P5098 MU1339",
+    "implementation": "MHI2_ER_AU37x_P5089 stack",
+    "repository": "https://github.com/chefranov/mhi2-au37x-carplay",
+    "commit": "a46136f705f61442e9074d2e43f2533c567307f2"
+  },
+  "appFiles": [
+    { "path": "armle/lib/dll/ipod-drvr-iap2.so", "bytes": 740261, "sha256": "7b9a1a6beef7bc893bb5a824486f4ad5fc34912a0b894a6d24d171ab324a8cb7" },
+    { "path": "armle/lib/libnvss_video.so", "bytes": 73302, "sha256": "b57f3eb1697c6846d06a1c546ad8b06834c630ccfac88c6ea6787dd5ccc41475" },
+    { "path": "armle/usr/lib/libiap2client.so.1", "bytes": 18613, "sha256": "e40135a7e1e2be8f9f98c63ce3417421e8ebf2bc0e4f352fb8d360f6ea8d35ac" },
+    { "path": "armle/usr/sbin/mm-ipod", "bytes": 40297, "sha256": "d5af4a342705bd7ac3498a080e24faf5702c6fc2960895f58aa2800268126464" },
+    { "path": "eso/bin/apps/dio_manager", "bytes": 694626, "sha256": "4e333ad8b60da686f0bb66953d75829ee687fe2d5e742ef0052f795f7adf39f1" },
+    { "path": "eso/bin/apps/dmdt", "bytes": 11876, "sha256": "3b47b3d2f5ac2fa039fa63b3e43c0c22c11bbca4726209d32ffb29b983da33e5" },
+    { "path": "eso/bin/apps/videoovermost", "bytes": 133432, "sha256": "32c5ecc0e4657f562a62d500077a47b2f0383e4ee2046c1f3f766735ac69ea21" },
+    { "path": "eso/hmi/lsd/lsd.sh", "bytes": 15056, "sha256": "88d142fb2dd6d79fbb72f5cc92bd63fd725d5ec6b0efb4cd6a95051f40d0943f" },
+    { "path": "eso/hmi/lsd/traceConfig.properties", "bytes": 19606, "sha256": "bdf6dd501455d5c2990a69ca72b307654ae9ffa3a646c3e3deabcc1eded33cd9" },
+    { "path": "eso/lib/factories/libdsicarplayproxy.so", "bytes": 73376, "sha256": "5d5d241e006803c18670ade6d714e7eabd6444d68dc3e31020cc8c007fbd363c" },
+    { "path": "eso/lib/libdmdt_core.so", "bytes": 37328, "sha256": "1a95de14ed929f790f2121415b72cc0929c5e8d5012b33c44e2b0f8c4183e7c3" },
+    { "path": "eso/lib/libirc_mmx_adapter.so", "bytes": 296648, "sha256": "fe9fbe4648957f50c125a03c2b238e6490392028c39944c4fe9600bf5708cb31" }
+  ],
+  "systemFiles": [
+    { "path": "etc/usblauncher_otg.lua", "bytes": 21614, "sha256": "03876b92fe9cb0e5f1b4ca586275b52d05a4f785174af85f1d696ffb7c15575b" },
+    { "path": "etc/eso/production/smartphone_integrator.json", "bytes": 7397, "sha256": "d30a4035d4b48f957e9c76988d8991538d70ac894884a44944c234f42987ec45" },
+    { "path": "etc/mm/iap2.cfg", "bytes": 6016, "sha256": "04940cca23a8362e5a7806f973127787a96835579a355ecfa202a5ff8065ad31" }
+  ],
+  "evidence": {
+    "hmiEntriesNar": 30400,
+    "hmiEntriesDonorRegion": 30396,
+    "hmiEntriesCommon": 30395,
+    "hmiEntriesCommonIdentical": 30319,
+    "hmiEntriesCommonDifferent": 76,
+    "hmiEntriesNarOnly": 5,
+    "hmiEntriesDonorOnly": 1,
+    "au37DonorBaseClassesIdenticalWithPdcDisabled": true,
+    "donorNativeArtifactsResolveAgainstNarRuntime": true,
+    "narRuntimeElfObjectsScanned": 1035,
+    "resolvedDonorStrongImports": 379
+  }
+}
