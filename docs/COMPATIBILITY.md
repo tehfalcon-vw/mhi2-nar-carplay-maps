@@ -3,7 +3,7 @@
 | Target | Static analysis | Build | Simulation | Vehicle |
 | --- | --- | --- | --- | --- |
 | Audi AUG22 `MHI2_US_AUG22_K3345` MU1439 | Pass | Source patch passes; payload not built | Not run | Not tested |
-| Audi AU57x MU1426 | Firmware received | Not started | Not run | Not tested |
+| Audi AU57x `MHI2_US_AU57x_K3341_1` MU1426 | Static profile passes; hybrid donor identified | Host Java + two native payloads pass | Not run | Not tested |
 | Audi AU37x MU1363 | Firmware received | Not started | Not run | Not tested |
 | Audi AU43x MU1389/MU1462 | Firmware received | Not started | Not run | Not tested |
 | Audi AU62x MU1463 | Firmware received | Not started | Not run | Not tested |

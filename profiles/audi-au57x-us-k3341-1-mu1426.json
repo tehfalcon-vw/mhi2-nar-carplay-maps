@@ -1,0 +1,66 @@
+{
+  "schemaVersion": 1,
+  "id": "audi-au57x-us-k3341-1-mu1426-app70",
+  "platform": "MHI2",
+  "brand": "Audi",
+  "family": "AU57x",
+  "train": "MHI2_US_AU57x_K3341_1",
+  "mu": 1426,
+  "variant": "FM2-H-N-US-AU-MLB",
+  "hardwareVariant": "70",
+  "status": "host-static-hybrid-port-required-not-vehicle-tested",
+  "sourceArchive": {
+    "bytes": 1625533113,
+    "sha256": "36a13e8e1e4b18f5ef05e0813856654f09a547093362d856230118ad7ef1d40f"
+  },
+  "appImage": {
+    "path": "MMX2/app/70/default/app.img",
+    "bytes": 1019183104,
+    "sha256": "ca9ce8c80ecc9d714cb79cfd63066f63ae9d69d6eb0a67157faaa8da87a28a33"
+  },
+  "hmiVersion": "HMI_AU_MIB2_H_NAR_G11_C6_184700",
+  "lsd": {
+    "bytes": 44051746,
+    "sha256": "057cf7d590e6edaa7a81f4a061c109ae268d0a76c85fbc61193f6ef9563374e5"
+  },
+  "donors": [
+    {
+      "role": "native iAP2 and system configuration",
+      "train": "MHI2_ER_AUG22_K3346",
+      "mu": 1438,
+      "sourceCommit": "17b4a2c5ff4ad113c7ad1df9a89fd5fd940738b2",
+      "repository": "https://github.com/ProManiFest2122/mhi2-k3346-carplay-vc"
+    },
+    {
+      "role": "G11 cluster and HUD route-guidance API",
+      "train": "MHI2_ER_AU57x_K3663",
+      "mu": 1425,
+      "sourceCommit": "8c0b2e78ef174f4f5c7caacd4e3909e2d8f23591",
+      "repository": "https://github.com/ekuka86/audi-mhi2-carplay-hud"
+    }
+  ],
+  "appFiles": [
+    { "path": "armle/lib/dll/ipod-drvr-iap2.so", "bytes": 739925, "sha256": "0ac13f43d3fb259eee328c272fa1211bb558b6e2cd97c6e38ef38e4e71469d51" },
+    { "path": "armle/lib/libnvss_video.so", "bytes": 73304, "sha256": "99be82415f51c7139a93a4c4081cffb4d3937826d41a669e1b505ba6760e234d" },
+    { "path": "armle/usr/lib/libiap2client.so.1", "bytes": 18613, "sha256": "33efe4fe95f07e1d3d5abb6a39edfb300430e417f30eb61b1600eaaaded9f31d" },
+    { "path": "armle/usr/sbin/mm-ipod", "bytes": 40297, "sha256": "57ef5e7010f2a8b574ad8b681f05004e1b337e67c4471da4c6a7153db0bcfb4f" },
+    { "path": "eso/bin/apps/dmdt", "bytes": 11880, "sha256": "4e62b48055fabceb38d4693454bc7e806abc1602347b22104b1593cf4c99738b" },
+    { "path": "eso/bin/apps/videoovermost", "bytes": 131424, "sha256": "4f29d43222ad0218dcaaa50698deb3ae90f9e841f95897cdb3c055b1e9d7dc8c" },
+    { "path": "eso/hmi/lsd/lsd.sh", "bytes": 4125, "sha256": "0e510a27b13f5626833ef029947299abc2e75b909230a259e3b6ab58d8b45f24" },
+    { "path": "eso/hmi/lsd/traceConfig.properties", "bytes": 19489, "sha256": "6782b9a7f7ad2ac4667ee6651f7af5794629a0ae3ed163f4ac6d5edab801c7b7" },
+    { "path": "eso/lib/factories/libdsicarplayproxy.so", "bytes": 73240, "sha256": "08315fa3c7768f68cb3cbab15197c614f307bbc67985d7bd6350891055a1a3ad" },
+    { "path": "eso/lib/libdmdt_core.so", "bytes": 37612, "sha256": "959b00174dc7e7679151e27b73381bdc1e0a292c167e94275197a07043327c5b" },
+    { "path": "eso/lib/libirc_mmx_adapter.so", "bytes": 296700, "sha256": "f21e43f89c0b6a1365bb41e91f326a29534554b9fed78236bbb8a819af9c05a8" }
+  ],
+  "evidence": {
+    "iap2OffsetVerifier": "all-pass-with-k3346-native-source",
+    "nativeCriticalFilesIdenticalToAug22Nar": 10,
+    "systemCarplayFilesIdenticalToAug22Nar": 2,
+    "hmiJarEntries": 16222,
+    "hmiEntriesCommonWithEuK3663": 16111,
+    "hmiEntriesIdenticalToEuK3663": 12562,
+    "hmiEntriesDifferentFromEuK3663": 3549,
+    "hmiEntriesNarOnly": 111,
+    "hmiEntriesEuOnly": 485
+  }
+}

@@ -24,6 +24,25 @@
       "repository": "https://github.com/harman-f/mhi2_altscreen_carplay",
       "commit": "a5e32b8e69f22335e60c0db49ddafdc7919a914f",
       "usage": "Host-side audit of the patched deployment shell; not vendored"
+    },
+    {
+      "name": "Audi AU57x K3663 CarPlay HUD implementation",
+      "repository": "https://github.com/ekuka86/audi-mhi2-carplay-hud",
+      "commit": "8c0b2e78ef174f4f5c7caacd4e3909e2d8f23591",
+      "license": "GPL-3.0-or-later with upstream provenance documented by the donor",
+      "usage": "G11 ClusterService/DDP2 and HUD route-guidance donor; native K3663 offsets are not reused"
+    },
+    {
+      "name": "MIB2 High route-guidance base",
+      "repository": "https://github.com/edzenis/mib2high-carplay-altscreen-rgi",
+      "commit": "bfea86859a5bdaed3c29a16f03fc7ba87ef4a19e",
+      "usage": "Source base consumed by the pinned K3663 Java donor build"
+    },
+    {
+      "name": "QNX 6.5 ARMv7 public toolchain source",
+      "repository": "https://github.com/luka-dev/qnx65-armv7-toolchain",
+      "commit": "56a66557245af14077678cd28a83ce3a337d9e2d",
+      "usage": "Pinned target headers for host native compilation and ABI verification"
     }
   ]
 }

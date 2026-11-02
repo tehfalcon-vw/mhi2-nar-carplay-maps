@@ -23,6 +23,11 @@ See [the AUG22 port report](docs/AUG22_PORT.md) and the
 [compatibility matrix](docs/COMPATIBILITY.md). These results are static
 firmware evidence, not vehicle-test evidence.
 
+AU57x MU1426 is the second analyzed target. Its native CarPlay/MOST layer
+matches the qualified NAR AUG22 baseline, while its older G11 HMI requires the
+working K3663 cluster/HUD implementation as a Java/API donor. See the
+[AU57x port report](docs/AU57X_PORT.md).
+
 ## Firmware coverage
 
 NAR and EU/RoW firmware donors have been received for AUG22, AU57x, AU37x,
