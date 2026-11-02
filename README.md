@@ -42,6 +42,12 @@ CarPlay stacks match directly, and the AU37x implementation's non-PDC HMI
 overrides are compatible. PDC is explicitly prohibited because one stock base
 class differs. See the [AU43x port report](docs/AU43X_PORT.md).
 
+AU62x / Audi R8 MU1463 is the fifth analyzed target. Its exact target gate,
+native and HMI linkage audits, and a complete relocated install/reinstall/
+uninstall transaction pass. The AU37x donor's key-panel hook preserves the
+MU1463 public API; PDC is prohibited because two PDC base classes differ. See
+the [AU62x port report](docs/AU62X_PORT.md).
+
 ## Firmware coverage
 
 NAR and EU/RoW firmware donors have been received for AUG22, AU57x, AU37x,
