@@ -8,7 +8,7 @@
   "train": "MHI2_US_AU43x_P5124",
   "mu": 1389,
   "hardwareVariant": "70",
-  "status": "cross-family-direct-stack-qualified-not-installer-simulated-not-vehicle-tested",
+  "status": "cross-family-direct-stack-qualified-installer-simulated-not-vehicle-tested",
   "sourceArchive": {
     "bytes": 810816601,
     "sha256": "7031803f4e0ffb99e3130a8907b6c032503bfe53d288f2bd948c131978b63840"
@@ -59,6 +59,9 @@
     "au37DonorBaseClassesIdenticalWithPdcDisabled": true,
     "donorNativeArtifactsResolveAgainstNarRuntime": true,
     "narRuntimeElfObjectsScanned": 1035,
-    "resolvedDonorStrongImports": 379
+    "resolvedDonorStrongImports": 379,
+    "installerFirstRunPassed": true,
+    "installerIdempotentReinstallPassed": true,
+    "uninstallerRestoredLiveStockFilesByteExact": true
   }
 }

@@ -40,7 +40,8 @@ all live stock files restored byte-for-byte. See the
 AU43x / Audi TT MU1389 and MU1462 are analyzed targets. Their NAR and EU TT
 core CarPlay stacks match the selected architecture, and the AU37x
 implementation's non-PDC HMI overrides are compatible. MU1462 also completed
-a relocated install/reinstall/uninstall transaction. PDC is explicitly
+a relocated install/reinstall/uninstall transaction. MU1389 now passes the
+same transaction test. PDC is explicitly
 prohibited. See the [AU43x port report](docs/AU43X_PORT.md).
 
 AU62x / Audi R8 MU1463 is the fifth analyzed target. Its exact target gate,

@@ -23,10 +23,13 @@ matches this firmware family.
   resolve across 1,035 ELF objects in the supplied NAR app/stage images.
 - NAR display-manager/video binaries differ from EU, so symbol resolution is
   necessary but not proof of runtime behavior.
+- The pinned donor completed first install, idempotent reinstall, and uninstall
+  against a relocated P5124 fixture. Ten installed artifacts were checked and
+  all 15 original live files were restored byte-for-byte.
 
 ## Current maturity
 
-`CROSS-FAMILY DIRECT-STACK STATIC QUALIFICATION PASS / EXACT TARGET GATE ADDED / PDC PROHIBITED / NOT INSTALLER-SIMULATED / NOT VEHICLE TESTED`
+`CROSS-FAMILY DIRECT-STACK STATIC QUALIFICATION PASS / INSTALLER TRANSACTION PASS / EXACT TARGET GATE ADDED / PDC PROHIBITED / NOT VEHICLE TESTED`
 
 The exact identity is in
 [`profiles/audi-au43x-us-p5124-mu1389.json`](../profiles/audi-au43x-us-p5124-mu1389.json).
