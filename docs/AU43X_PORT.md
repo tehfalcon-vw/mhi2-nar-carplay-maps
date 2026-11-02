@@ -1,6 +1,6 @@
 # Audi AU43x / TT NAR port
 
-## Target and comparison firmware
+## MU1389 target and comparison firmware
 
 The target is `MHI2_US_AU43x_P5124`, MU1389, app variant 70, HMI
 `HMI_AU_MIB2_H_NAR_G24_C10_182700`. The regional comparator is
@@ -30,3 +30,21 @@ matches this firmware family.
 
 The exact identity is in
 [`profiles/audi-au43x-us-p5124-mu1389.json`](../profiles/audi-au43x-us-p5124-mu1389.json).
+
+## MU1462 / P5180 result
+
+The later TT target is `MHI2_US_AU43x_P5180`, MU1462, HMI
+`HMI_AU_MIB2_H_NAR_G24_C10_200600`. Its entire app image and `lsd.jxe` are
+byte-identical to the separately qualified AU62x P5181 target. Against EU TT
+P5098, 29,733 of 30,395 common HMI entries are byte-identical; the donor's 14
+ordinary non-PDC base classes match exactly and its intentional key-panel hook
+preserves the target's public API. All 379 native strong imports resolve.
+
+The pinned donor also passed first install, idempotent reinstall, and uninstall
+against a relocated P5180 fixture. Ten installed artifacts were checked and 15
+original live files were restored byte-for-byte. PDC remains prohibited.
+
+`P5180: STATIC QUALIFICATION PASS / INSTALLER TRANSACTION PASS / EXACT TARGET GATE ADDED / PDC PROHIBITED / NOT VEHICLE TESTED`
+
+Its identity is in
+[`profiles/audi-au43x-us-p5180-mu1462.json`](../profiles/audi-au43x-us-p5180-mu1462.json).
