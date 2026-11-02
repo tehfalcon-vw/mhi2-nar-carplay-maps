@@ -32,7 +32,10 @@ from the supplied NAR image; it has not been tested in a vehicle.
 
 AU37x MU1363 is the third analyzed target. Its NAR iAP2/video stack and every
 donor-overridden HMI base class match the car-tested EU P5089 implementation.
-See the [AU37x port report](docs/AU37X_PORT.md).
+The full pinned donor installer, idempotent reinstall, and uninstaller have
+also passed against a relocated fixture made from the supplied NAR files, with
+all live stock files restored byte-for-byte. See the
+[AU37x port report](docs/AU37X_PORT.md).
 
 ## Firmware coverage
 

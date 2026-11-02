@@ -32,12 +32,36 @@ This is the strongest direct donor match found so far:
 The upstream installer already accepts both `MHI2_ER_AU37x_*` and
 `MHI2_US_AU37x_*` train names. The exact P5107 preflight in
 [`ports/au37x`](../ports/au37x) narrows that broad check to the supplied NAR
-HMI, native binaries, system configuration, and `lsd.jxe`. An offline NAR
-install/rollback simulation remains required before producing a tester package.
+HMI, native binaries, system configuration, and `lsd.jxe`.
+
+## Installer simulation
+
+The pinned donor's own `install.sh` and `uninstall.sh` were run with only their
+four absolute mount prefixes relocated into a disposable fixture populated
+from the supplied NAR P5107 image. No installer decisions or patching logic
+were rewritten. The audit exercised:
+
+- the `MHI2_US_AU37x_P5107` train check and stock-file conflict checks;
+- the default RGI and AltScreen installation path;
+- all hooks, jars, renderers, supervisors, shaders, and marker files;
+- the `smartphone_integrator.json` backup and in-place NAR patch;
+- the `mm-ipod` backup and shim;
+- a second complete install to verify idempotency; and
+- the complete upstream uninstall path.
+
+Ten installed artifacts were checked. After uninstall, all 15 original live
+fixture files matched their pre-install SHA-256 values. The upstream
+uninstaller deliberately retains three recovery copies:
+`smartphone_integrator.json.orig`, `mm-ipod.orig`, and
+`rgd_real/mm-ipod`. Those retained backups are expected, not rollback drift.
+
+This validates the file-level install transaction. It cannot validate QNX
+process injection, GPU rendering, MOST transport, steering-wheel input, or an
+actual Virtual Cockpit display.
 
 ## Current maturity
 
-`DIRECT DONOR STATIC QUALIFICATION PASS / EXACT TARGET GATE PASS / NOT INSTALLER-SIMULATED / NOT VEHICLE TESTED`
+`DIRECT DONOR STATIC QUALIFICATION PASS / EXACT TARGET GATE PASS / INSTALL-REINSTALL-UNINSTALL SIMULATION PASS / NOT VEHICLE TESTED`
 
 No vendor firmware is redistributed. The exact target identity and all file
 hashes used for qualification are in
