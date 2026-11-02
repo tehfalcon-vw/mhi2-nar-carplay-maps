@@ -8,7 +8,7 @@
   "mu": 1426,
   "variant": "FM2-H-N-US-AU-MLB",
   "hardwareVariant": "70",
-  "status": "host-static-hybrid-port-required-not-vehicle-tested",
+  "status": "offline-installer-simulated-not-vehicle-tested",
   "sourceArchive": {
     "bytes": 1625533113,
     "sha256": "36a13e8e1e4b18f5ef05e0813856654f09a547093362d856230118ad7ef1d40f"
@@ -61,6 +61,14 @@
     "hmiEntriesIdenticalToEuK3663": 12562,
     "hmiEntriesDifferentFromEuK3663": 3549,
     "hmiEntriesNarOnly": 111,
-    "hmiEntriesEuOnly": 485
+    "hmiEntriesEuOnly": 485,
+    "installerSimulation": "install-rollback-version-rejection-auto-restore-pass",
+    "realFirmwarePackageAudit": "install-and-sha256-exact-rollback-pass",
+    "hostArtifacts": {
+      "javaSha256": "b6c4004805c1d2b613275fd898ef54e944662e40a177c2ee674052f090a93c79",
+      "altscreenSha256": "c5ccb47b530fc2ebeb92cc09f5ac8636d284710c5b6d20577ab7c133be6dac0c",
+      "rgiIpodSha256": "29cf80b87b1d31d4aad6b242b4f6bd8b537e683c586d3f61de8803b132b17abf",
+      "rendererSha256": "b65e7874c7415ccd141574e1e59fc1816df3173bb1ff830961fbb6fc21715b9c"
+    }
   }
 }
