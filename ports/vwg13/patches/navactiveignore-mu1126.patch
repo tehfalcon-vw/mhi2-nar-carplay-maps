@@ -1,0 +1,26 @@
+diff --git a/navactiveignore/build.sh b/navactiveignore/build.sh
+index 16dad03..952f64f 100755
+--- a/navactiveignore/build.sh
++++ b/navactiveignore/build.sh
+@@ -19,10 +19,11 @@ case "$PROFILE" in
+     # Our car's backup (2026-10-21). The five patched classes are byte-identical to K4525.
+     # a0cc737c = time-stamped conversion, 573b603a = the same classes from jxe2jar_run.py (fixed timestamps)
+     MU1161) JAR_SHA=a0cc737ce40cf0ef95127fd9bf6d3c21a8ca2edeffe815a5d1adbbd2ae0f2599; JAR_SHA_ALT=573b603a0b79b6c150d6c4363d5db2f9a1b644b21f81ab4a2329d5cdda0f1576; CARPLAY_PROP=2910009; AA_PROP=2910005 ;;
++    NAR_MU1126) JAR_SHA=f1e9035ece699b9e94b5bfa72609d5fc2b6853be21176cfbdcf8670725981812; CARPLAY_PROP=2910009; AA_PROP=2910005 ;;
+     *) echo "unknown profile $PROFILE" >&2; exit 2 ;;
+ esac
+ 
+-sha() { shasum -a 256 "$1" | cut -d' ' -f1; }
++sha() { sha256sum "$1" | cut -d' ' -f1; }
+ fail() { echo "FAIL: $*" >&2; exit 1; }
+ 
+ # ASM 9.7 from Maven Central (same bytes as the copies in jxe2jar and maxim-smirnov).
+@@ -64,7 +65,7 @@ for c in $CLASSES; do
+ done
+ 
+ # Deterministic jar: sorted entries, fixed timestamp, so the hash is reproducible.
+-python3 -I - "$W/out" "$W/NavActiveIgnore.jar" "$PROFILE" <<'EOF'
++${PYTHON:-python3} -I - "$W/out" "$W/NavActiveIgnore.jar" "$PROFILE" <<'EOF'
+ import os, sys, zipfile
+ src, dst, profile = sys.argv[1:]
+ files = sorted(os.path.relpath(os.path.join(d, f), src) for d, _, fs in os.walk(src) for f in fs if f.endswith('.class'))

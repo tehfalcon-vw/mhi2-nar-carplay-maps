@@ -1,0 +1,13 @@
+diff --git a/dio_manager.wrapper.sh b/dio_manager.wrapper.sh
+index bb4005e..f995b21 100644
+--- a/dio_manager.wrapper.sh
++++ b/dio_manager.wrapper.sh
+@@ -5,7 +5,7 @@ LOG=/ramdisk/carplaymaps-launcher.log
+ if test ! -x "$REAL" || test ! -r "$ROOT/core.so";then exit 127;fi
+ case "$(cat "$ROOT/PROFILE" 2>/dev/null)" in
+  MU1102/790|MU1367/790|MU1440/790|MU1433/790|MU1447/790) CPVC_CLUSTER_PROFILE=790 ;;
+- MU1102/791|MU1367/791) CPVC_CLUSTER_PROFILE=791 ;;
++ MU1102/791|MU1367/791|MU1126/791) CPVC_CLUSTER_PROFILE=791 ;;
+  *) echo profile-invalid > "$LOG";exec "$REAL" "$@" ;;
+ esac
+ export CPVC_CLUSTER_PROFILE

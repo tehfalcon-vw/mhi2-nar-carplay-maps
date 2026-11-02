@@ -50,6 +50,20 @@
       "commit": "a46136f705f61442e9074d2e43f2533c567307f2",
       "license": "GPL-3.0",
       "usage": "Vehicle-tested EU P5089 direct donor for the AU37x NAR P5107 target; not vendored"
+    },
+    {
+      "name": "MHI2 CarPlay Maps native map stack",
+      "repository": "https://github.com/omonob/MHI2-Carplay-Maps",
+      "commit": "90751cd7ce8db751083e403d1fa4b79b8c0241b4",
+      "license": "GPL-3.0",
+      "usage": "Pinned MU1102/MU1367 native AID 791 stack for the VWG13 MU1126 local map-only package; not vendored"
+    },
+    {
+      "name": "VW MHI2 AID CarPlay source patcher",
+      "repository": "https://github.com/chrzanowy/mhi2-aid-carplay",
+      "commit": "b3831a2ab72ee031df7cc58460447dea1700bb8c",
+      "license": "GPL-3.0-or-later",
+      "usage": "ASM NavActiveIgnore source patcher rebuilt against the exact NAR MU1126 HMI; not vendored"
     }
   ]
 }

@@ -1,0 +1,69 @@
+{
+  "schemaVersion": 1,
+  "id": "vw-vwg13-us-p3659-2-mu1126-app70",
+  "platform": "MHI2",
+  "brand": "Volkswagen",
+  "family": "VWG13",
+  "vehicle": "MQB with AID 791",
+  "train": "MHI2_US_VWG13_P3659_2",
+  "mu": 1126,
+  "hardwareVariant": "70",
+  "status": "map-only-source-build-and-installer-simulated-not-vehicle-tested",
+  "sourceArchive": {
+    "bytes": 936449168,
+    "sha256": "66bc6f7fb16ef006369e0ec43ccf48c2bea899f0a43ec8fd7c38a34754ef60ec"
+  },
+  "appImage": {
+    "path": "MMX2/app/70/default/app.img",
+    "bytes": 1438613504,
+    "sha256": "5a6a7971c767d632bc4ec578bc1dbd7bc1fdfe721063afd59ffc1e97f2b13f0d"
+  },
+  "hmiVersion": null,
+  "lsd": {
+    "bytes": 54248171,
+    "sha256": "5c53b4af46eba389fb4865ae7f07a26a0eea5bcf55ff02791be11fa88e663c62"
+  },
+  "donor": {
+    "firmwareComparator": "MHI2_ER_VWG13_K4525_1 MU1367",
+    "nativeMapRepository": "https://github.com/omonob/MHI2-Carplay-Maps",
+    "nativeMapCommit": "90751cd7ce8db751083e403d1fa4b79b8c0241b4",
+    "hmiPatchRepository": "https://github.com/chrzanowy/mhi2-aid-carplay",
+    "hmiPatchCommit": "b3831a2ab72ee031df7cc58460447dea1700bb8c"
+  },
+  "appFiles": [
+    { "path": "armle/lib/dll/ipod-drvr-iap2.so", "bytes": 739925, "sha256": "af8d2ab3ecefed7951547ff3c858c1d03bf22512384b897d10883710bca365a7" },
+    { "path": "armle/lib/libnvss_video.so", "bytes": 73304, "sha256": "3030fbe1428c7e3d48146dc21c89091d909417f4a52b3742cdb2eb28100339a2" },
+    { "path": "armle/usr/lib/libiap2client.so.1", "bytes": 18613, "sha256": "65e8545945e9556dd20dea428da61f703c2f2912714d5bd047ed963243f758ff" },
+    { "path": "armle/usr/sbin/mm-ipod", "bytes": 40297, "sha256": "9342f5692a01cec332e281722cede36ac1bd50b7a925892b3ee6fea4f0bf6997" },
+    { "path": "eso/bin/apps/dio_manager", "bytes": 655359, "sha256": "2c820a48f82bd40c9b7f1f825a9a6f788b73566870f08d99bf83abae4dd847a2" },
+    { "path": "eso/bin/apps/dmdt", "bytes": 11880, "sha256": "bf6cfeef1ff389448f2c5e3c3320147dacf664031e59976f3fa3f46134eb918d" },
+    { "path": "eso/bin/apps/videoovermost", "bytes": 131792, "sha256": "7e499e8c0a67313f151451178b67a46cc0a9738189296091cc1d10198a17ca89" },
+    { "path": "eso/hmi/lsd/lsd.sh", "bytes": 15909, "sha256": "73e3b07c18fb0ae933bdb5fe90fb3fc5d32b267ccbec92c5d45d572f26b82692" },
+    { "path": "eso/hmi/lsd/traceConfig.properties", "bytes": 19606, "sha256": "bdf6dd501455d5c2990a69ca72b307654ae9ffa3a646c3e3deabcc1eded33cd9" },
+    { "path": "eso/lib/factories/libdsicarplayproxy.so", "bytes": 73220, "sha256": "7676ec56d2da56bbd4795006c595f0c45eb155b3ae1e7c0ed8ab8444f97b7dee" },
+    { "path": "eso/lib/libdmdt_core.so", "bytes": 37604, "sha256": "15770bdfea1ff603fcd4bb3ee348b34718dda9377d0b8c20bfffb5505301911a" },
+    { "path": "eso/lib/libirc_mmx_adapter.so", "bytes": 296700, "sha256": "5b1349d2acc1e383b3973507e390c88d51380a0412b3f5ca78188f60b098f85d" }
+  ],
+  "systemFiles": [
+    { "path": "etc/usblauncher_otg.lua", "bytes": 21401, "sha256": "25518192d248edae5d13d694ee11e2f3f5db69b634aba5254ca8dd2c05c16fad" },
+    { "path": "etc/eso/production/smartphone_integrator.json", "bytes": 7199, "sha256": "c8d6707c8c2779154c7ee9bf2ae781b336d2ccf52fe1ca53164a7f69e335c055" },
+    { "path": "etc/mm/iap2.cfg", "bytes": 5907, "sha256": "5919fda88074bd250a3530e276cdf8e22ecb95cf5743ffe91caf0b6c236b973f" }
+  ],
+  "evidence": {
+    "hmiEntriesNar": 25765,
+    "hmiEntriesComparator": 26404,
+    "hmiEntriesCommon": 25547,
+    "hmiEntriesCommonIdentical": 23308,
+    "hmiEntriesCommonDifferent": 2239,
+    "nativeMapArtifacts": 9,
+    "nativeStrongImportsResolvedWithPayload": 548,
+    "narDerivedNavIgnoreClassesVerified": 6,
+    "j9ClassVersion": 46,
+    "hmiReferenceCheckProblems": 0,
+    "installerFirstRunPassed": true,
+    "installerIdempotentReinstallPassed": true,
+    "installerInjectedFailurePointsPassed": 5,
+    "uninstallerRestoredLiveStockFilesByteExact": true,
+    "nativeRouteGuidanceQualified": false
+  }
+}

@@ -49,6 +49,13 @@ uninstall transaction pass. The AU37x donor's key-panel hook preserves the
 MU1463 public API; PDC is prohibited because two PDC base classes differ. See
 the [AU62x port report](docs/AU62X_PORT.md).
 
+VWG13 MU1126 is the first Volkswagen target. Its map-only package builds from
+pinned donors plus the exact NAR HMI, the NAR-derived NavActiveIgnore patch
+passes J9 bytecode and reference verification, and its staged installer passes
+install/reinstall/byte-exact rollback on copied firmware files. Native route
+guidance and generic MU1102 menu/control jars are intentionally excluded. See
+the [VWG13 port report](docs/VWG13_PORT.md).
+
 ## Firmware coverage
 
 NAR and EU/RoW firmware donors have been received for AUG22, AU57x, AU37x,
