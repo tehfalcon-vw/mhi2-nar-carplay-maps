@@ -1,114 +1,166 @@
 # MHI2 NAR CarPlay Maps
 
-MHI2-only project for displaying CarPlay navigation guidance and map video in
-North American VW and Audi Virtual Cockpits.
+Beta port of CarPlay navigation maps and route guidance to North American Audi
+Virtual Cockpit systems running Harman MHI2 firmware.
 
-## Scope
+This repository contains target checks, source patches, and packaging tools. It
+does not contain Audi firmware or third-party compiled payloads. MHI2Q, MHS2,
+MH2P, MST2, and Technisat/Preh units are not supported here.
 
-- Harman MHI2 units only.
-- North American Region firmware is the deployment target.
-- VW and Audi variants are supported as separate, fingerprinted targets.
-- MHI2Q, MHS2, MH2P, MST2, and other platforms stay in their own repositories.
+> **Beta software:** the packages below pass offline install, reinstall, and
+> rollback tests, but have not been verified in a vehicle. A wrong or
+> interrupted installation can leave the MMI screen unusable. Test only with
+> stable power, a full backup, and known recovery access.
 
-## Status
+## Supported beta targets
 
-Active port development. No public installable build exists yet.
+The full train must match. Similar names and newer/older releases are rejected.
 
-The first target is Audi AUG22 `MHI2_US_AUG22_K3345`, MU1439. Host-side
-analysis found that its core iAP2, RGI, video-over-MOST, and HMI classes match
-the working EU K3346 implementation closely enough for a target-locked NAR
-source build. The fixed iAP2 hook verifier passes completely.
+| Vehicle | Exact NAR firmware | MU | Package target |
+| --- | --- | ---: | --- |
+| Audi A3 | `MHI2_US_AU37x_P5107` | 1363 | `au37x-p5107` |
+| Audi TT | `MHI2_US_AU43x_P5124` | 1389 | `au43x-p5124` |
+| Audi TT | `MHI2_US_AU43x_P5180` | 1462 | `au43x-p5180` |
+| Audi R8 | `MHI2_US_AU62x_P5181` | 1463 | `au62x-p5181` |
 
-See [the AUG22 port report](docs/AUG22_PORT.md) and the
-[compatibility matrix](docs/COMPATIBILITY.md). These results are static
-firmware evidence, not vehicle-test evidence.
+AU57x K3341, AUG22 K3345, and VWG13 P3659_2 are source/developer ports only;
+they are not ready for public vehicle testing. See the concise
+[compatibility table](docs/COMPATIBILITY.md).
 
-AU57x MU1426 is the second analyzed target. Its native CarPlay/MOST layer
-matches the qualified NAR AUG22 baseline, while its older G11 HMI requires the
-working K3663 cluster/HUD implementation as a Java/API donor. See the
-[AU57x port report](docs/AU57X_PORT.md). Its hybrid payload now builds, and its
-fail-closed installer has completed install and rollback against copied files
-from the supplied NAR image; it has not been tested in a vehicle.
+## What testers need
 
-AU37x MU1363 is the third analyzed target. Its NAR iAP2/video stack and every
-donor-overridden HMI base class match the car-tested EU P5089 implementation.
-The full pinned donor installer, idempotent reinstall, and uninstaller have
-also passed against a relocated fixture made from the supplied NAR files, with
-all live stock files restored byte-for-byte. See the
-[AU37x port report](docs/AU37X_PORT.md).
+- A unit on one of the exact firmware trains above.
+- M.I.B. with **Run Custom Script** / **Run individual script**, or SSH access.
+- A full M.I.B. backup and a recovery method already tested on the vehicle.
+- A stable external vehicle power supply. Do not install from battery alone.
+- A FAT32 SD card, Git, and Git Bash (Windows), macOS, or Linux.
+- A wired iPhone and an existing working CarPlay connection.
 
-AU43x / Audi TT MU1389 and MU1462 are analyzed targets. Their NAR and EU TT
-core CarPlay stacks match the selected architecture, and the AU37x
-implementation's non-PDC HMI overrides are compatible. MU1462 also completed
-a relocated install/reinstall/uninstall transaction. MU1389 now passes the
-same transaction test. PDC is explicitly
-prohibited. See the [AU43x port report](docs/AU43X_PORT.md).
+This beta currently claims CarPlay map and route-guidance support only. Do not
+assume Android Auto map video is supported.
 
-AU62x / Audi R8 MU1463 is the fifth analyzed target. Its exact target gate,
-native and HMI linkage audits, and a complete relocated install/reinstall/
-uninstall transaction pass. The AU37x donor's key-panel hook preserves the
-MU1463 public API; PDC is prohibited because two PDC base classes differ. See
-the [AU62x port report](docs/AU62X_PORT.md).
+## 1. Confirm the firmware
 
-VWG13 MU1126 is the first Volkswagen target. Its map-only package builds from
-pinned donors plus the exact NAR HMI, the NAR-derived NavActiveIgnore patch
-passes J9 bytecode and reference verification, and its staged installer passes
-install/reinstall/byte-exact rollback on copied firmware files. Native route
-guidance and generic MU1102 menu/control jars are intentionally excluded. See
-the [VWG13 port report](docs/VWG13_PORT.md).
+Open the MMI version information and compare the complete train and MU number
+with the table above. Do not continue on a partial match.
 
-## Firmware coverage
+The package also performs a read-only check of the train and exact stock files
+on the unit. There is no force or bypass option.
 
-NAR and EU/RoW firmware donors have been received for AUG22, AU57x, AU37x,
-AU43x, AU62x, and VWG13. Firmware remains private analysis input and is never
-committed.
+## 2. Build the SD-card package
 
-Do not commit firmware, extracted vendor binaries, keys, certificates, or
-personal vehicle data. Keep them outside the repository and use the local
-fingerprint tool instead.
+The package is assembled locally from the pinned GPL donor so its license and
+history remain intact. In Git Bash or a Unix shell:
 
-## Fingerprint an extracted firmware tree
+```sh
+git clone https://github.com/tehfalcon-vw/mhi2-nar-carplay-maps.git
+git clone https://github.com/chefranov/mhi2-au37x-carplay.git
+git -C mhi2-au37x-carplay checkout a46136f705f61442e9074d2e43f2533c567307f2
 
-Node.js 22 or newer is required.
+sh mhi2-nar-carplay-maps/tools/build-audi-test-package.sh \
+  au37x-p5107 \
+  mhi2-au37x-carplay \
+  mhi2-nar-beta
+```
+
+Replace `au37x-p5107` with the package target from the table for a TT or R8.
+The builder refuses a different donor revision or an existing output folder.
+
+Copy the generated `mhi2-nar-beta/mod` folder to the root of a FAT32 SD card.
+The resulting card must contain:
+
+```text
+mod/
+  custom.sh
+  command.sh
+  carplay/
+    check-nar.sh
+    install-nar.sh
+    target-gate.sh
+    install.sh
+    uninstall.sh
+```
+
+## 3. Run the safe check
+
+Leave the package unchanged for the first run—do **not** create the `INSTALL`
+file yet.
+
+1. Connect stable external power and switch the ignition on.
+2. Insert the SD card.
+3. In M.I.B., open **Advanced Settings**.
+4. Select **Run Custom Script** or **Run individual script**.
+5. Read the output. Continue only if it ends with `TARGET_GATE=PASS`.
+
+The first run is read-only. A missing file, changed file size, or wrong firmware
+stops the check. Photograph or save any failure rather than trying to bypass it.
+
+With SSH, the equivalent command is:
+
+```sh
+sh /path/to/mod/carplay/check-nar.sh
+```
+
+## 4. Install
+
+1. Remove the SD card and create an empty file named `INSTALL` inside
+   `mod/carplay`.
+2. Reinsert the card and run the same M.I.B. custom-script command.
+3. Confirm the target gate passes and the installer finishes without errors.
+4. Reboot the MMI only after the script tells you it has completed.
+5. Connect the iPhone by USB, open CarPlay Maps, start a route, and select the
+   navigation view in the Virtual Cockpit.
+
+Do not add `PDC` or `IGNORE_CONFLICTS` marker files. The NAR wrapper rejects
+both. Other donor options should be left at their defaults for the first test.
+
+## 5. Report a test
+
+Open a [GitHub issue](https://github.com/tehfalcon-vw/mhi2-nar-carplay-maps/issues)
+and include:
+
+- Vehicle model/year, full firmware train, MU, and package target.
+- Whether the read-only gate printed `TARGET_GATE=PASS`.
+- Wired or wireless CarPlay.
+- Main-screen behavior, cockpit map, maneuver arrows, audio, and steering-wheel
+  controls.
+- Clear photos or a short video and the complete installer output.
+
+Remove VINs, device names, account details, and other personal information.
+
+## Uninstall and recovery
+
+For a normal uninstall, remove the `INSTALL` file, create an empty file named
+`UNINSTALL` beside it in `mod/carplay`, and run the M.I.B. custom script again.
+Reboot after it completes.
+
+With SSH:
+
+```sh
+SRC_DIR=/path/to/mod/carplay sh /path/to/mod/carplay/uninstall.sh
+```
+
+If the main screen is black, do not repeatedly cycle power. Use the recovery
+access prepared before testing, run the same uninstaller, and preserve the log
+and backup files for the issue report.
+
+## Developers
+
+Run the host-side checks with Node.js 22 or newer:
 
 ```sh
 npm test
-npm run fingerprint -- path/to/extracted-firmware firmware-manifest.json
-npm run verify-target -- profiles/audi-aug22-us-k3345-mu1439.json path/to/app-tree --lsd path/to/lsd.jxe
 ```
 
-The tool records relative paths, byte sizes, and SHA-256 values without copying
-firmware into the repository. Review the manifest for sensitive filenames
-before sharing it.
-
-## Repository layout
-
-```text
-docs/       firmware intake and development notes
-patches/    target-specific changes to pinned upstream source
-profiles/   exact, fail-closed NAR target identities
-ports/      target-specific installer and payload source
-targets/    reviewed target manifests with no firmware content
-tools/      read-only analysis and build tools
-test/       host-side tests
-```
-
-`profiles/` contains fail-closed target identities. A profile match means only
-that the supplied files match the analyzed firmware; it does not mean a build
-has been tested in a vehicle.
-
-The `AUG22 source audit` workflow checks the NAR patch against an exact pinned
-upstream revision and runs the pinned QNX-target shell auditor. It uses no
-firmware or vendor binaries and does not produce an install package.
-
-## Safety
-
-Future builds must fail closed on unknown firmware, create verified backups,
-and provide a tested rollback path. Vehicle testing starts only after host-side
-validation and requires stable power plus recovery access.
+`profiles/` contains exact firmware identities, `ports/` contains target gates
+and source patches, and `test/` exercises the fail-closed behavior. Firmware,
+keys, certificates, extracted vendor files, and personal vehicle data must not
+be committed.
 
 ## License
 
-Original project source is available under the [MIT License](LICENSE). Vendor
-firmware and third-party assets are not included. Volkswagen, Audi, Apple,
-CarPlay, and other trademarks belong to their respective owners.
+Original code in this repository is provided under the [MIT License](LICENSE).
+The generated tester package contains the pinned GPL-3.0 donor and retains its
+license files. Vendor firmware is not included. Audi, Volkswagen, Apple, and
+CarPlay are trademarks of their respective owners; this is an independent
+community project.

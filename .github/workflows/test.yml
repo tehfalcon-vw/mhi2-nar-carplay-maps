@@ -13,3 +13,16 @@ jobs:
         with:
           node-version: 22
       - run: npm test
+      - name: Validate public beta package builder
+        run: |
+          git clone https://github.com/chefranov/mhi2-au37x-carplay.git /tmp/mhi2-donor
+          git -C /tmp/mhi2-donor checkout a46136f705f61442e9074d2e43f2533c567307f2
+          for target in au37x-p5107 au43x-p5124 au43x-p5180 au62x-p5181; do
+            sh tools/build-audi-test-package.sh "$target" /tmp/mhi2-donor "/tmp/$target"
+            sh -n "/tmp/$target/mod/custom.sh"
+            sh -n "/tmp/$target/mod/command.sh"
+            sh -n "/tmp/$target/mod/carplay/check-nar.sh"
+            sh -n "/tmp/$target/mod/carplay/install-nar.sh"
+            test -f "/tmp/$target/mod/carplay/LICENSE"
+            test "$(cat "/tmp/$target/mod/carplay/TARGET")" = "$target"
+          done

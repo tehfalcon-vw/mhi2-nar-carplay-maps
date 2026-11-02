@@ -1,0 +1,75 @@
+name: MHI2 NAR beta test
+description: Report a compatible vehicle test or target-gate failure
+title: "[Beta test] "
+labels: [beta-test]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for testing. Remove VINs, account names, device names, and other personal information before submitting.
+  - type: dropdown
+    id: target
+    attributes:
+      label: Package target
+      options:
+        - au37x-p5107
+        - au43x-p5124
+        - au43x-p5180
+        - au62x-p5181
+    validations:
+      required: true
+  - type: input
+    id: vehicle
+    attributes:
+      label: Vehicle
+      description: Model and year only
+    validations:
+      required: true
+  - type: input
+    id: firmware
+    attributes:
+      label: Complete firmware train and MU
+      placeholder: MHI2_US_AU37x_P5107 / MU1363
+    validations:
+      required: true
+  - type: dropdown
+    id: gate
+    attributes:
+      label: Read-only gate result
+      options:
+        - TARGET_GATE=PASS
+        - Gate rejected the unit
+    validations:
+      required: true
+  - type: dropdown
+    id: connection
+    attributes:
+      label: CarPlay connection
+      options:
+        - Wired
+        - Wireless
+        - Not reached
+    validations:
+      required: true
+  - type: textarea
+    id: result
+    attributes:
+      label: Result
+      description: Describe the MMI screen, cockpit map, maneuver arrows, audio, and steering-wheel controls.
+    validations:
+      required: true
+  - type: textarea
+    id: output
+    attributes:
+      label: Installer or gate output
+      description: Paste the complete text or attach a clear photo. Remove personal data first.
+      render: shell
+    validations:
+      required: true
+  - type: checkboxes
+    id: safety
+    attributes:
+      label: Safety confirmation
+      options:
+        - label: I used stable external power and had a backup plus recovery access before installing.
+          required: true
