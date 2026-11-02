@@ -1,0 +1,14 @@
+{
+  "name": "mhi2-nar-carplay-maps",
+  "version": "0.0.1",
+  "private": true,
+  "description": "CarPlay navigation in NAR VW and Audi MHI2 virtual cockpits",
+  "license": "MIT",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "test": "node --test",
+    "fingerprint": "node tools/fingerprint-tree.cjs"
+  }
+}
