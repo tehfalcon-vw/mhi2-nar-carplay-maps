@@ -30,13 +30,14 @@ This is the strongest direct donor match found so far:
   symbol, but display behavior still requires vehicle validation.
 
 The upstream installer already accepts both `MHI2_ER_AU37x_*` and
-`MHI2_US_AU37x_*` train names. This repository will add an exact P5107 target
-gate and an offline NAR install/rollback simulation before producing a tester
-package.
+`MHI2_US_AU37x_*` train names. The exact P5107 preflight in
+[`ports/au37x`](../ports/au37x) narrows that broad check to the supplied NAR
+HMI, native binaries, system configuration, and `lsd.jxe`. An offline NAR
+install/rollback simulation remains required before producing a tester package.
 
 ## Current maturity
 
-`DIRECT DONOR STATIC QUALIFICATION PASS / NOT INSTALLER-SIMULATED / NOT VEHICLE TESTED`
+`DIRECT DONOR STATIC QUALIFICATION PASS / EXACT TARGET GATE PASS / NOT INSTALLER-SIMULATED / NOT VEHICLE TESTED`
 
 No vendor firmware is redistributed. The exact target identity and all file
 hashes used for qualification are in
